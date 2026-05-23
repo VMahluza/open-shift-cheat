@@ -253,7 +253,16 @@ oc delete pod hello-world-pod
 
 # 🚀 Deployments
 
-## 🚀 Creating DeploymentConfigs
+OpenShift supports both:
+
+- **DeploymentConfig (DC)** → OpenShift-specific deployment resource
+- **Deployment** → Kubernetes-native deployment resource (recommended for newer environments)
+
+---
+
+# 🚀 DeploymentConfigs (OpenShift)
+
+## 📦 Creating DeploymentConfigs
 
 ### Deploy image
 
@@ -298,7 +307,7 @@ oc new-app quay.io/practicalopenshift/hello-world \
 
 ---
 
-## 🔍 Deployment Information
+## 🔍 DeploymentConfig Information
 
 ### Describe DeploymentConfig
 
@@ -309,10 +318,193 @@ oc describe dc/hello-world
 ### Get DeploymentConfig YAML
 
 ```bash
-oc get -o yaml dc/hello-world
+oc get dc/hello-world -o yaml
+```
+
+### List DeploymentConfigs
+
+```bash
+oc get dc
 ```
 
 ---
+
+## 🔄 Rollouts & Rollbacks (DeploymentConfig)
+
+### Deploy latest version
+
+```bash
+oc rollout latest dc/hello-world
+```
+
+### Rollback deployment
+
+```bash
+oc rollback dc/hello-world
+```
+
+### View rollout history
+
+```bash
+oc rollout history dc/hello-world
+```
+
+### Check rollout status
+
+```bash
+oc rollout status dc/hello-world
+```
+
+---
+
+## 🧹 Cleanup
+
+### Delete all application resources
+
+```bash
+oc delete all -l app=hello-world
+```
+
+---
+
+# 🚀 Deployments (Kubernetes)
+
+## 📦 Creating Deployments
+
+### Deploy image
+
+```bash
+oc new-app <image-tag>
+```
+
+> By default, newer OpenShift versions create a Deployment.
+
+### Deploy Hello World image
+
+```bash
+oc new-app quay.io/practicalopenshift/hello-world
+```
+
+### Deploy from Git repository
+
+```bash
+oc new-app <git-repo-url>
+```
+
+### Example Git deployment
+
+```bash
+oc new-app https://gitlab.com/practical-openshift/hello-world.git
+```
+
+### Deploy with custom name
+
+```bash
+oc new-app quay.io/practicalopenshift/hello-world \
+  --name demo-app
+```
+
+---
+
+## 🔍 Deployment Information
+
+### List Deployments
+
+```bash
+oc get deployments
+```
+
+### Describe Deployment
+
+```bash
+oc describe deployment hello-world
+```
+
+### Get Deployment YAML
+
+```bash
+oc get deployment hello-world -o yaml
+```
+
+---
+
+## 🔄 Rollouts & Rollbacks (Deployment)
+
+### Restart rollout
+
+```bash
+oc rollout restart deployment/hello-world
+```
+
+### Check rollout status
+
+```bash
+oc rollout status deployment/hello-world
+```
+
+### View rollout history
+
+```bash
+oc rollout history deployment/hello-world
+```
+
+### Roll back deployment
+
+```bash
+oc rollout undo deployment/hello-world
+```
+
+### Roll back to a specific revision
+
+```bash
+oc rollout undo deployment/hello-world --to-revision=2
+```
+
+---
+
+## ⚙️ Scaling Deployments
+
+### Scale deployment to 3 replicas
+
+```bash
+oc scale deployment/hello-world --replicas=3
+```
+
+### Verify scaling
+
+```bash
+oc get pods
+```
+
+---
+
+## 🧹 Cleanup
+
+### Delete deployment
+
+```bash
+oc delete deployment hello-world
+```
+
+### Delete all application resources
+
+```bash
+oc delete all -l app=hello-world
+```
+
+---
+
+# 📝 Quick Comparison
+
+| Feature | DeploymentConfig (DC) | Deployment |
+|-----------|----------------------|-------------|
+| Platform | OpenShift | Kubernetes |
+| Rollout trigger | Config/Image changes | ReplicaSet changes |
+| Supports ImageStreams | ✅ | ❌ |
+| Uses ReplicationController | ✅ | ❌ |
+| Uses ReplicaSets | ❌ | ✅ |
+| Recommended for new apps | ❌ | ✅ |
+| Manual rollout command | `oc rollout latest` | `oc rollout restart` |
 
 ## 🧹 Cleanup
 
