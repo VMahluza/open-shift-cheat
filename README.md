@@ -151,6 +151,10 @@ oc project <project-name>
 
 ## 📘 Pod Documentation
 
+<p align="center">
+  <img src="./src/images/ocp-pods.png" width="900"/>
+</p>
+
 ### Pod documentation
 
 ```bash
