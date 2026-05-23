@@ -1,10 +1,6 @@
 # 🚀 OpenShift & Docker Cheat Sheet
 
 <p align="center">
-  <img src="./src/images/docker-containers.png" width="900"/>
-</p>
-
-<p align="center">
   Practical OpenShift & Docker commands for learning containers, deployments, builds, networking, scaling, and templates.
 </p>
 
@@ -30,7 +26,9 @@
 ---
 
 # 🐳 Docker Basics
-
+<p align="center">
+  <img src="./src/images/docker-containers.png" width="900"/>
+</p>
 ## 🏗️ Building Containers
 
 ### Build an image from the current directory
