@@ -6,6 +6,10 @@ A practical OpenShift and Docker command reference while learning containerizati
 
 # 🐳 Building Containers
 
+<p align="center">
+  <img src="./src/images/docker-made-easy.png" width="900"/>
+</p>
+
 ## Build an image based on the current directory
 ```bash
 docker build .
