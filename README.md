@@ -121,6 +121,10 @@ oc logout
 
 # 📦 Projects & Pods
 
+<p align="center">
+  <img src="./src/images/ocp-pods.png" width="900"/>
+</p>
+
 ## 📁 Project Management
 
 ### View current project
@@ -150,10 +154,6 @@ oc project <project-name>
 ---
 
 ## 📘 Pod Documentation
-
-<p align="center">
-  <img src="./src/images/ocp-pods.png" width="900"/>
-</p>
 
 ### Pod documentation
 
@@ -252,6 +252,9 @@ oc delete pod hello-world-pod
 ---
 
 # 🚀 Deployments
+<p align="center">
+  <img src="./src/images/deployments-and-dcs.png" width="900"/>
+</p>
 
 OpenShift supports both:
 
