@@ -537,6 +537,10 @@ oc rollback dc/hello-world
 
 ## ⚡ Trigger Management
 
+<p align="center">
+  <img src="./src/images/triggers.png" width="900"/>
+</p>
+
 ### List triggers
 
 ```bash
